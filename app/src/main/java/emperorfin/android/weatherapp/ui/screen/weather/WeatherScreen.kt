@@ -21,20 +21,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun WeatherScreen(city: String, viewModel: WeatherViewModel) {
-//    LaunchedEffect(city) {
-//        viewModel.fetchWeather(city)
-//    }
-//
-//    val weather by viewModel.weather.collectAsState()
-//
-//    weather?.let {
-//
-//        Column(modifier = Modifier.padding(16.dp)) {
-//            Text("City: ${it.name}")
-//            Text("Temperature: ${it.main.temp}°C")
-//            Text("Description: ${it.weather.first().description}")
-//        }
-//    }
 
     val weather by viewModel.weather.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
