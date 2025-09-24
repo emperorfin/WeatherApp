@@ -28,7 +28,7 @@ class HomeViewModelTest {
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         coEvery { mockPrefs.cityFlow } returns flowOf("Lagos")
-        viewModel = HomeViewModel(mockPrefs, dispatcher = testDispatcher)
+        viewModel = HomeViewModel(mockPrefs, dispatcherMain = testDispatcher, dispatcherIo = testDispatcher)
     }
 
     @After
