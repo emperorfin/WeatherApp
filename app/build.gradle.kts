@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +8,13 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.google.dagger.hilt.android)
 }
+
+val properties = Properties().apply {
+    rootProject.file("local.properties").reader().use(::load)
+}
+
+val propOpenWeatherMapBaseUrl = properties["openWeatherMap.baseUrl"] as String
+val propOpenWeatherMapApikey = properties["openWeatherMap.apiKey"] as String
 
 android {
     namespace = "emperorfin.android.weatherapp"
@@ -19,6 +28,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "OPEN_WEATHER_MAP_BASE_URL", propOpenWeatherMapBaseUrl)
+        buildConfigField("String", "OPEN_WEATHER_MAP_API_KEY", propOpenWeatherMapApikey)
     }
 
     buildTypes {
@@ -39,6 +51,8 @@ android {
     }
     buildFeatures {
         compose = true
+
+        buildConfig = true
     }
 }
 

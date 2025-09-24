@@ -11,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import emperorfin.android.weatherapp.ui.screen.home.HomeScreen
 import emperorfin.android.weatherapp.ui.screen.home.HomeViewModel
 import emperorfin.android.weatherapp.ui.screen.splash.SplashScreen
+import emperorfin.android.weatherapp.ui.screen.weather.WeatherScreen
+import emperorfin.android.weatherapp.ui.screen.weather.WeatherViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -23,6 +25,11 @@ class MainActivity : ComponentActivity() {
                 composable("home") {
                     val homeViewModel: HomeViewModel = hiltViewModel()
                     HomeScreen(homeViewModel, navController)
+                }
+                composable("weather/{city}") { backStackEntry ->
+                    val city = backStackEntry.arguments?.getString("city") ?: ""
+                    val weatherViewModel: WeatherViewModel = hiltViewModel()
+                    WeatherScreen(city, weatherViewModel)
                 }
             }
         }

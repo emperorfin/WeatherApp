@@ -1,0 +1,2 @@
+openWeatherMap.baseUrl="https://api.openweathermap.org/data/2.5/"
+openWeatherMap.apiKey="1592429e5fff384a6363658950c6e9dd"

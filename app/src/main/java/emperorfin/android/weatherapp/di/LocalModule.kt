@@ -16,7 +16,7 @@ object LocalModule {
 
     @Provides
     @Singleton
-    fun provideCityPreference(@ApplicationContext context: Context): Preferences {
+    fun providePreference(@ApplicationContext context: Context): Preferences {
         return Preferences(context)
     }
 }
